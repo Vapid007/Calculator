@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+.box{
+    height: 280px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 300px;
+    border: 10px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+ span
+{
+     font-size: 200px;
+}
+
+#ampm{
+    position: relative;
+    margin-left: 20px;
+    
+}
+
+
+
+
+
+</style>
+<body style="background-color: aqua;">
+
+    <div class="box">
+        <span id="hours">00</span>
+        <span>:</span>
+        <span id="minutes">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+        <span id="ampm"></span>
+    </div>
+
+    <script>
+//DOM
+function clock()
+{
+   let time = new Date()
+   let hh = time.getHours()
+   let mm = time.getMinutes()
+   let ss = time.getSeconds()
+   let ampm
+
+   if(hh>12){
+    ampm="PM"
+   }else{
+    ampm="AM"
+   }
+
+   if(hh>12){
+    hh= Math.abs(hh-12) //Math.abs()-> converts negative value to positive value
+   }
+
+   if(ss<=9)
+   {
+   ss="0"+ss
+   }
+   if(mm<=9)
+   {
+    mm="0"+mm
+   }
+   if(hh<=9)
+   {
+    hh="0"+hh 
+   }
+
+
+   document.getElementById('hours').innerHTML=hh
+   document.getElementById('minutes').innerHTML=mm
+   document.getElementById('seconds').innerHTML=ss
+   document.getElementById('ampm').innerHTML=ampm
+   
+   }
+   clock()
+
+setInterval(clock,1000);
+    </script>
+</body>
+</html>
